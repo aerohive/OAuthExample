@@ -19,9 +19,9 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
         
     //======= THIS GENERATES THE WEBVIEW WHEN USERS LOG IN=========
         // MARK: Variables for OAuth
-        let clientID = "19a087a8"
-        let clientSecret = "daffa2ecd066ef09da98e4527749dee2"
-        let redirectURL = "https://developer.aerohive.com/"
+        let clientID = "52739d49"
+        let clientSecret = "069881278521632ab86c6ed946629dd1"
+        let redirectURL = "https://developer.aerohive.com"
         
         // Set up the OAuth URL to call
         let authQueryParams = "?client_id="+clientID+"&redirect_uri="+redirectURL

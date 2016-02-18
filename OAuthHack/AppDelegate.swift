@@ -8,8 +8,24 @@
 
 import UIKit
 
+extension String {  // Extends the String class by adding URL encoding
+    public func urlEncode() -> String {
+        let encodedURL = CFURLCreateStringByAddingPercentEscapes(
+            nil,
+            self as NSString,
+            nil,
+            "!@#$%&*'();:=+,/?[]",
+            CFStringBuiltInEncodings.UTF8.rawValue)
+        return encodedURL as String
+    }
+}
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
+    
 
     var window: UIWindow?
 
@@ -39,6 +55,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    
+    // This function returns a dictionary of the query parameters from the query parmeters in the URL.
+    func parametersFromQueryString(queryString: String?) -> [String: String] {
+        var parameters = [String: String]()
+        if (queryString != nil) {
+            var parameterScanner: NSScanner = NSScanner(string: queryString!)
+            var name:NSString? = nil
+            var value:NSString? = nil
+            while (parameterScanner.atEnd != true) {
+                name = nil;
+                parameterScanner.scanUpToString("=", intoString: &name)
+                parameterScanner.scanString("=", intoString:nil)
+                value = nil
+                parameterScanner.scanUpToString("&", intoString:&value)
+                parameterScanner.scanString("&", intoString:nil)
+                if (name != nil && value != nil) {
+                    parameters[name!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!]
+                        = value!.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+                }
+            }
+        }
+        return parameters
+    }
+    
+    // This function extracts the AUTH CODE from the URL paramters using paramertsFromQueryString()
+    func extractCode(notification: NSNotification) -> String? {
+        let url: NSURL? = (notification.userInfo as!
+            [String: AnyObject])[UIApplicationLaunchOptionsURLKey] as? NSURL
+        
+        // [1] extract the code from the URL
+        return self.parametersFromQueryString(url?.query)["code"]
     }
 
 

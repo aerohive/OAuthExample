@@ -13,6 +13,7 @@ import Alamofire
 import SwiftyJSON
 
 class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set UIWebView Delegate!!
+    @IBOutlet weak var successImage: UIImageView!
     
     // MARK: Variables for OAuth
     let clientID = "52739d49"
@@ -29,6 +30,7 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
     }
     
     func createLoginWebView() {
+        successImage.hidden = true //hide the success image until we have the keys.
         //======= THIS GENERATES THE WEBVIEW WHEN USERS LOG IN=========
         // Set up the OAuth URL to call
         let authQueryParams = "?client_id="+clientID+"&redirect_uri="+redirectURL
@@ -67,10 +69,10 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
         }
         
     }
-    func webViewDidStartLoad(webView: UIWebView) {
-        let requestedURL = myWebView.request?.URL?.absoluteString
-        print("STARTED" + requestedURL!)
-    }
+//    func webViewDidStartLoad(webView: UIWebView) {
+//        let requestedURL = myWebView.request?.URL?.absoluteString
+//        print("STARTED" + requestedURL!) // This doesn't seem to capture the URL
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -171,7 +173,8 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
 //    }
     
     func nowIHaveTheAccessTokens(authResult: JSON) {
-        print ("These are the droids we're looking for")
+        print ("These are the droids we're looking for!!")
+        successImage.hidden = false // Unhide the success image
         print (authResult)
         var accessTokens = [String:String]()
         for VHM in authResult["data"] {

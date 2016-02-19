@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -31,30 +33,41 @@
                         <viewControllerLayoutGuide type="bottom" id="SRu-1i-Ad1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VF6-3r-ZTN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feeling-mighty-successful" translatesAutoresizingMaskIntoConstraints="NO" id="6Fo-MV-1OF">
-                                <rect key="frame" x="0.0" y="98" width="320" height="196"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feeling-mighty-successful" translatesAutoresizingMaskIntoConstraints="NO" id="6Fo-MV-1OF">
+                                <rect key="frame" x="0.0" y="89" width="414" height="258"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6Fo-MV-1OF" secondAttribute="height" multiplier="120:73" constant="-10.109589041095887" id="MCl-wx-hpf"/>
+                                    <constraint firstAttribute="height" constant="258" id="MWJ-aC-1HK"/>
+                                </constraints>
                             </imageView>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDm-XA-jUf">
-                                <rect key="frame" x="0.0" y="28" width="320" height="400"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDm-XA-jUf">
+                                <rect key="frame" x="0.0" y="28" width="414" height="400"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="RBK-xc-d8Z"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="eOY-eg-sl2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="hdL-Zk-lEI"/>
+                                </constraints>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="trailing" secondItem="VDm-XA-jUf" secondAttribute="trailing" id="BaE-mC-0lm"/>
-                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="leading" secondItem="VDm-XA-jUf" secondAttribute="leading" id="GVm-8W-bEs"/>
-                            <constraint firstAttribute="trailing" secondItem="6Fo-MV-1OF" secondAttribute="trailing" id="PyL-FN-byT"/>
-                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="top" secondItem="3CL-kE-Yvw" secondAttribute="bottom" constant="78" id="QX6-Xf-UJ0"/>
-                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="leading" secondItem="VF6-3r-ZTN" secondAttribute="leading" id="Qro-gA-Kdd"/>
-                            <constraint firstItem="SRu-1i-Ad1" firstAttribute="top" secondItem="6Fo-MV-1OF" secondAttribute="bottom" constant="274" id="ZTD-CQ-XZD"/>
+                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="leading" secondItem="VF6-3r-ZTN" secondAttribute="leadingMargin" constant="-20" id="2Q7-Mn-m6h"/>
+                            <constraint firstItem="VDm-XA-jUf" firstAttribute="top" secondItem="VF6-3r-ZTN" secondAttribute="topMargin" constant="28" id="3yl-rj-MLa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VDm-XA-jUf" secondAttribute="trailing" constant="-20" id="EbF-dh-2RU"/>
+                            <constraint firstItem="VDm-XA-jUf" firstAttribute="top" secondItem="VF6-3r-ZTN" secondAttribute="topMargin" constant="28" id="O63-Yd-AKE"/>
+                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="top" secondItem="VF6-3r-ZTN" secondAttribute="topMargin" constant="89" id="bWh-so-ewv"/>
+                            <constraint firstItem="6Fo-MV-1OF" firstAttribute="top" secondItem="3CL-kE-Yvw" secondAttribute="bottom" constant="69" id="tqM-Pw-gwc"/>
+                            <constraint firstItem="VDm-XA-jUf" firstAttribute="leading" secondItem="VF6-3r-ZTN" secondAttribute="leadingMargin" constant="-20" id="xez-ya-qrw"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="myWebView" destination="VDm-XA-jUf" id="AFw-cH-Hc0"/>
+                        <outlet property="successImage" destination="6Fo-MV-1OF" id="TIZ-UL-Lki"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQM-fj-z8J" userLabel="First Responder" sceneMemberID="firstResponder"/>

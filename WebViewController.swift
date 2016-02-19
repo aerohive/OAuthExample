@@ -64,7 +64,18 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
             }
             else { // We don't have the Auth Code
                 // ADD NOTIFICATION TO USER HERE
-                print ("There was an error.")
+                //print ("There was an error.")
+                let alert = UIAlertController()
+                alert.title = "Hey! There was an error."
+                alert.message = params["error"]
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                    UIAlertAction in
+                    NSLog("OK Pressed")
+                    self.createLoginWebView() //reload the login page
+                }
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+                
             }
         }
         

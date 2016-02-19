@@ -54,6 +54,7 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
         // 'hasPrefix' checks if one string begins with the other. It returns True or False
         if (requestedURL!.lowercaseString.hasPrefix(redirectURL.lowercaseString)){
             print ("Spotted the Redirect URL!")
+            self.myWebView.hidden = true // Since we got the auth code, hide the webView!
             let UrlArray = requestedURL!.componentsSeparatedByString("?") //Split the URL string into an array on '?'
             let queryString = UrlArray[1] // Grab only the things after the '?'
             let params = parametersFromQueryString(queryString) // We get back a dict of the query params.
@@ -135,7 +136,6 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
                     else{
                         print("Success!")
                         //self.dismissViewControllerAnimated(true, completion: nil) //doesn't work
-                        self.myWebView.hidden = true
                         self.nowIHaveTheAccessTokens(result)
                     }
                     print (result)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CB37E097CD32FA5E9E0DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2012DE7EDD76BEE33774C0E4 /* Pods.framework */; };
 		858EB4F01C73EFF7007D437A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EB4EF1C73EFF7007D437A /* AppDelegate.swift */; };
 		858EB4F21C73EFF7007D437A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EB4F11C73EFF7007D437A /* ViewController.swift */; };
 		858EB4F51C73EFF7007D437A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 858EB4F31C73EFF7007D437A /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2012DE7EDD76BEE33774C0E4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A533B4D8AF49C320BF3D6C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		858EB4EC1C73EFF7007D437A /* OAuthHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		858EB4EF1C73EFF7007D437A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		858EB4F11C73EFF7007D437A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		858EB4FB1C73EFF7007D437A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85F0D04D1C75418500A5DF35 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		85F0D0501C754B9A00A5DF35 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ../WebViewController.swift; sourceTree = "<group>"; };
+		E8BC060B611597A85787C578 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,18 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CB37E097CD32FA5E9E0DBC9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		054CA39DD29204CF66B97A59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2012DE7EDD76BEE33774C0E4 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		858EB4E31C73EFF7007D437A = {
 			isa = PBXGroup;
 			children = (
 				85F0D04D1C75418500A5DF35 /* Podfile */,
 				858EB4EE1C73EFF7007D437A /* OAuthHack */,
 				858EB4ED1C73EFF7007D437A /* Products */,
+				CFFD5A956E30CDF536615055 /* Pods */,
+				054CA39DD29204CF66B97A59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +85,15 @@
 			path = OAuthHack;
 			sourceTree = "<group>";
 		};
+		CFFD5A956E30CDF536615055 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8BC060B611597A85787C578 /* Pods.debug.xcconfig */,
+				3A533B4D8AF49C320BF3D6C4 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 858EB4FE1C73EFF7007D437A /* Build configuration list for PBXNativeTarget "OAuthHack" */;
 			buildPhases = (
+				D06D61481D44DDC0BD8E02E8 /* Check Pods Manifest.lock */,
 				858EB4E81C73EFF7007D437A /* Sources */,
 				858EB4E91C73EFF7007D437A /* Frameworks */,
 				858EB4EA1C73EFF7007D437A /* Resources */,
+				D43D2A96F39C61EE387FAA7A /* Embed Pods Frameworks */,
+				9995C68390979444632715FD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9995C68390979444632715FD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D06D61481D44DDC0BD8E02E8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D43D2A96F39C61EE387FAA7A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		858EB4E81C73EFF7007D437A /* Sources */ = {
@@ -253,6 +328,7 @@
 		};
 		858EB4FF1C73EFF7007D437A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8BC060B611597A85787C578 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OAuthHack/Info.plist;
@@ -264,6 +340,7 @@
 		};
 		858EB5001C73EFF7007D437A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A533B4D8AF49C320BF3D6C4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OAuthHack/Info.plist;

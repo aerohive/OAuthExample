@@ -35,16 +35,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDm-XA-jUf">
-                                <rect key="frame" x="16" y="40" width="288" height="382"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OUb-HM-tOg">
+                                <rect key="frame" x="16" y="28" width="288" height="382"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tyO-cN-1Sm">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="382"/>
+                                        <subviews>
+                                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDm-XA-jUf">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="382"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                            </webView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VDm-XA-jUf" firstAttribute="centerX" secondItem="VF6-3r-ZTN" secondAttribute="centerX" id="HPP-Js-sEQ"/>
-                            <constraint firstItem="VDm-XA-jUf" firstAttribute="leading" secondItem="VF6-3r-ZTN" secondAttribute="leadingMargin" constant="-4" id="Xm0-7d-7af"/>
-                            <constraint firstItem="VDm-XA-jUf" firstAttribute="top" secondItem="3CL-kE-Yvw" secondAttribute="bottom" constant="20" id="oua-R5-GI1"/>
+                            <constraint firstItem="OUb-HM-tOg" firstAttribute="top" secondItem="3CL-kE-Yvw" secondAttribute="bottom" constant="8" symbolic="YES" id="b3h-s2-bCK"/>
+                            <constraint firstItem="OUb-HM-tOg" firstAttribute="leading" secondItem="VF6-3r-ZTN" secondAttribute="leadingMargin" id="dwW-YT-49o"/>
+                            <constraint firstItem="OUb-HM-tOg" firstAttribute="trailing" secondItem="VF6-3r-ZTN" secondAttribute="trailingMargin" id="fgm-uY-F8Q"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

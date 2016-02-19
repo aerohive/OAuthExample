@@ -87,7 +87,7 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
             "X-AH-API-CLIENT-ID": clientID,
             "X-AH-API-CLIENT-REDIRECT-URI": redirectURL
         ]
-        let url = "https://cloud.aerohive.com/services/acct/thirdparty/accesstoken?authCode="
+        let url = "https://cloud.aerohive.com/services/acct/thirdparty/accesstoken"
         let requestURL = url
         params["redirectUri"] = redirectURL // Add the redirect URL to our query parameters.
         Alamofire.request(.POST, requestURL, headers: headers, parameters:params )
@@ -101,26 +101,29 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
                     print(headers)
                     return
                 }
-                print("Parsed JSON")
                 if let value: AnyObject = response.result.value {
                     // handle the results as JSON, without a bunch of nested if loops
                     let result = JSON(value)
-                    if result["error"]["status"].stringValue == "200"{
-                        print("Success!")
-                    }
-                    else{
+                    print (result)
+                    if result["error"]["status"].intValue > 200 { // There was some sort of error
                         print("There was an error:" + result["error"]["status"].stringValue)
-                        // TODO: NOTIFY THE USER THAT THE API RETURNED AN ERROR (404,401,403,500, etc.)
+                        // NOTIFY THE USER THAT THE API RETURNED AN ERROR (404,401,403,500, etc.)
                         let alert = UIAlertController()
                         alert.title = "Hey! Error: " + result["error"]["status"].stringValue
                         alert.message = result["error"]["message"].stringValue
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                             UIAlertAction in
                             NSLog("OK Pressed")
-                            self.createLoginWebView()
+                            self.createLoginWebView() //reload the login page
                         }
                         alert.addAction(okAction)
                         self.presentViewController(alert, animated: true, completion: nil)
+                    }
+                    else{
+                        print("Success!")
+                        //self.dismissViewControllerAnimated(true, completion: nil) //doesn't work
+                        self.myWebView.hidden = true
+                        self.nowIHaveTheAccessTokens(result)
                     }
                     print (result)
                 }
@@ -158,15 +161,34 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
         return parameters
     }
     
-    // This function extracts the AUTH CODE from the URL paramters using paramertsFromQueryString()
-    func extractCode(notification: NSNotification) -> String? {
-        let url: NSURL? = (notification.userInfo as!
-            [String: AnyObject])[UIApplicationLaunchOptionsURLKey] as? NSURL
-        
-        // [1] extract the code from the URL
-        return self.parametersFromQueryString(url?.query)["code"]
-    }
+//    // This function extracts the AUTH CODE from the URL paramters using paramertsFromQueryString()
+//    func extractCode(notification: NSNotification) -> String? {
+//        let url: NSURL? = (notification.userInfo as!
+//            [String: AnyObject])[UIApplicationLaunchOptionsURLKey] as? NSURL
+//        
+//        // [1] extract the code from the URL
+//        return self.parametersFromQueryString(url?.query)["code"]
+//    }
     
+    func nowIHaveTheAccessTokens(authResult: JSON) {
+        print ("These are the droids we're looking for")
+        print (authResult)
+        var accessTokens = [String:String]()
+        for VHM in authResult["data"] {
+            accessTokens[authResult["data"][VHM.0]["ownerId"].stringValue] = authResult["data"][VHM.0]["accessToken"].stringValue
+        }
+        let alert = UIAlertController()
+        alert.title = "Hey, we got it!"
+        alert.message = "Token 1: " + accessTokens.values.first!
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+            self.myWebView.hidden = false // Unhide the webview.
+            self.createLoginWebView() //reload the login page
+        }
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
 
     /*

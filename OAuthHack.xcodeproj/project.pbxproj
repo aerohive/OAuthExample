@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2CB37E097CD32FA5E9E0DBC9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2012DE7EDD76BEE33774C0E4 /* Pods.framework */; };
+		8520B0D71C80CE9600320E5E /* AerohiveAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8520B0D61C80CE9600320E5E /* AerohiveAPIManager.swift */; };
 		858EB4F01C73EFF7007D437A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EB4EF1C73EFF7007D437A /* AppDelegate.swift */; };
 		858EB4F21C73EFF7007D437A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EB4F11C73EFF7007D437A /* ViewController.swift */; };
 		858EB4F71C73EFF7007D437A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 858EB4F61C73EFF7007D437A /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		2012DE7EDD76BEE33774C0E4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A533B4D8AF49C320BF3D6C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8520B0D61C80CE9600320E5E /* AerohiveAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AerohiveAPIManager.swift; sourceTree = "<group>"; };
 		858EB4EC1C73EFF7007D437A /* OAuthHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAuthHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		858EB4EF1C73EFF7007D437A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		858EB4F11C73EFF7007D437A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				85F0D0501C754B9A00A5DF35 /* WebViewController.swift */,
+				8520B0D61C80CE9600320E5E /* AerohiveAPIManager.swift */,
 				858EB4EF1C73EFF7007D437A /* AppDelegate.swift */,
 				858EB4F11C73EFF7007D437A /* ViewController.swift */,
 				85F0D0521C77D1B100A5DF35 /* Main.storyboard */,
@@ -220,6 +223,7 @@
 				858EB4F21C73EFF7007D437A /* ViewController.swift in Sources */,
 				85F0D0511C754B9A00A5DF35 /* WebViewController.swift in Sources */,
 				858EB4F01C73EFF7007D437A /* AppDelegate.swift in Sources */,
+				8520B0D71C80CE9600320E5E /* AerohiveAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,7 +62,7 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
             print(params)
             if params["authCode"] != nil { // Check if the result has authCode
                 print("Found your auth code!")
-                let accessTokensJSON = getAccessTokenFromAuthCode(params)
+                getAccessTokenFromAuthCode(params)
             }
             else { // We don't have the Auth Code
                 // ADD NOTIFICATION TO USER HERE
@@ -95,7 +95,7 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
     
     
     // This function will exchange an AuthCode for an Access Token
-    func getAccessTokenFromAuthCode(var params: [String:String]) -> [String: String] {
+    func getAccessTokenFromAuthCode(var params: [String:String]) {
         print("Trying to exhange the Auth Code for an Access Token...")
         let headers = [
             "X-AH-API-CLIENT-SECRET": clientSecret,
@@ -146,7 +146,6 @@ class WebViewController: UIViewController, UIWebViewDelegate { //Be sure you set
                     
                 }
         }
-        return ["hello":"there"]
     }
     
     
